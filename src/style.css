@@ -1,0 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.general-form{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.form-row{
+  display: flex;
+  flex-direction: column;
+}
