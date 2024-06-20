@@ -29,6 +29,7 @@ function Education({ onSave }) {
           name="school"
           id="school"
           onChange={(e) => setSchool(e.target.value)}
+          required
         />
         <label htmlFor="degree">Degree</label>
         <input
@@ -37,6 +38,7 @@ function Education({ onSave }) {
           id="degree"
           placeholder="Ex: Computer Science, BS"
           onChange={(e) => setDegree(e.target.value)}
+          required
         />
         <label htmlFor="startDate">Start Date</label>
         <input
@@ -44,6 +46,7 @@ function Education({ onSave }) {
           name="startDate"
           id="startDate"
           onChange={(e) => setStartDate(e.target.value)}
+          required
         />
         <label htmlFor="endDate">End Date</label>
         <input
@@ -51,6 +54,7 @@ function Education({ onSave }) {
           name="endDate"
           id="endDate"
           onChange={(e) => setEndDate(e.target.value)}
+          required
         />
         <label htmlFor="location">Location</label>
         <input
@@ -58,6 +62,7 @@ function Education({ onSave }) {
           id="location"
           placeholder="City, State/Country"
           onChange={(e) => setLocation(e.target.value)}
+          required
         />
         <button type="submit">Save</button>
       </form>

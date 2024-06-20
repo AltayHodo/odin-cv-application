@@ -29,6 +29,7 @@ function General({ onSave }) {
             placeholder="John Doe"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
         </div>
 
@@ -40,6 +41,7 @@ function General({ onSave }) {
             placeholder="example@url.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
 
@@ -51,6 +53,7 @@ function General({ onSave }) {
             placeholder="555-555-5555"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            required
           />
         </div>
 
@@ -62,6 +65,7 @@ function General({ onSave }) {
             placeholder="City, State"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            required
           />
         </div>
 

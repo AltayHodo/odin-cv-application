@@ -29,43 +29,45 @@ function ResumeBuilder() {
       </div>
       <div className="resume-preview">
         <div className="general-info">
-          <div className="name">{generalInfo.name}</div>
+          <div className="name">{generalInfo.name}Altay Hodoglugil</div>
           <div className="sub-info">
-            <span>{generalInfo.email}</span>
-            <span>{generalInfo.phone}</span>
-            <span>{generalInfo.address}</span>
+            <span>{generalInfo.email}randomemail@gmail.com</span>
+            <span>{generalInfo.phone}555-555-5555</span>
+            <span>{generalInfo.address}Berkeley, CA</span>
           </div>
         </div>
-        <div className="education-info">
-          <div className="education-title">Education</div>
-          <div className="education-content">
-            <div className="left">
-              <div className="date">
-                <span>{educationInfo.startDate}</span>
-                <span>{educationInfo.endDate}</span>
+        <div className="resume-main-content">
+          <div className="education-info">
+            <div className="education-title">Education</div>
+            <div className="education-content">
+              <div className="left">
+                <div className="date">
+                  <span>{educationInfo.startDate}06/06/2024</span>
+                  <span>{educationInfo.endDate}08/08/2025</span>
+                </div>
+                <div className="location">{educationInfo.location} Berkeley, CA</div>
               </div>
-              <div className="location">{educationInfo.location}</div>
-            </div>
-            <div className="right">
-              <div className="school">{educationInfo.school}</div>
-              <div className="degree">{educationInfo.degree}</div>
+              <div className="right">
+                <div className="school">{educationInfo.school}UC Berkeley</div>
+                <div className="degree">{educationInfo.degree}Computer Science, BA</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="experience-info">
-          <div className="experience-title">Experience</div>
-          <div className="experience-content">
-            <div className="left">
-              <div className="date">
-                <span>{experienceInfo.startDate}</span>
-                <span>{experienceInfo.endDate}</span>
+          <div className="experience-info">
+            <div className="experience-title">Experience</div>
+            <div className="experience-content">
+              <div className="left">
+                <div className="date">
+                  <span>{experienceInfo.startDate}06/06/2024</span>
+                  <span>{experienceInfo.endDate}08/08/2025</span>
+                </div>
+                <div className="location">{experienceInfo.location}Seattle, CA</div>
               </div>
-              <div className="location">{experienceInfo.location}</div>
-            </div>
-            <div className="right">
-              <div className="company">{experienceInfo.company}</div>
-              <div className="position">{experienceInfo.position}</div>
-              <div className="description">{experienceInfo.description}</div>
+              <div className="right">
+                <div className="company">{experienceInfo.company}Vought Inc</div>
+                <div className="position">{experienceInfo.position}Software Engineer</div>
+                <div className="description">{experienceInfo.description}Supported senior researchers on accessibility standards for the open web. Created and usability tested wireframes and prototypes. Produced interactive documentation for quick onboarding of new researchers</div>
+              </div>
             </div>
           </div>
         </div>

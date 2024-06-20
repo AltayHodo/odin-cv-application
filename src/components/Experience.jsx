@@ -31,6 +31,7 @@ function Experience({ onSave }) {
           name="position"
           id="position"
           onChange={(e) => setPosition(e.target.value)}
+          required
         />
         <label htmlFor="company">Company</label>
         <input
@@ -38,6 +39,7 @@ function Experience({ onSave }) {
           name="company"
           id="company"
           onChange={(e) => setCompany(e.target.value)}
+          required
         />
         <label htmlFor="startDate">Start Date</label>
         <input
@@ -45,6 +47,7 @@ function Experience({ onSave }) {
           name="startDate"
           id="startDate"
           onChange={(e) => setStartDate(e.target.value)}
+          required
         />
         <label htmlFor="endDate">End Date</label>
         <input
@@ -52,6 +55,7 @@ function Experience({ onSave }) {
           name="endDate"
           id="endDate"
           onChange={(e) => setEndDate(e.target.value)}
+          required
         />
         <label htmlFor="location">Location</label>
         <input
@@ -59,15 +63,16 @@ function Experience({ onSave }) {
           id="location"
           placeholder="City, State/Country"
           onChange={(e) => setLocation(e.target.value)}
+          required
         />
         <label htmlFor="description">Description</label>
-        <input
-          type="textarea"
+        <textarea
           name="description"
           id="description"
           placeholder="Enter Description"
           onChange={(e) => setDescription(e.target.value)}
-        />
+          required
+        ></textarea>
         <button type="submit">Save</button>
       </form>
     </>
