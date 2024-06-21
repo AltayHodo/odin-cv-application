@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function General({ onSave }) {
   const [name, setName] = useState('');
@@ -6,8 +6,8 @@ function General({ onSave }) {
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
 
-  function saveInfo(e) {
-    e.preventDefault();
+  // Function to save the general information
+  function saveInfo() {
     const generalInfo = {
       name,
       email,
@@ -17,10 +17,14 @@ function General({ onSave }) {
     onSave(generalInfo);
   }
 
+  useEffect(() => {
+    saveInfo();
+  }, [name, email, phone, address]);
+
   return (
     <>
       <h2>General</h2>
-      <form action="" className="general-form" onSubmit={saveInfo}>
+      <form action="" className="general-form" onSubmit={(e) => e.preventDefault()}>
         <div className="form-row">
           <label htmlFor="name">Full Name</label>
           <input
@@ -68,8 +72,6 @@ function General({ onSave }) {
             required
           />
         </div>
-
-        <button type="submit">Save</button>
       </form>
     </>
   );
