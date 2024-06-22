@@ -57,17 +57,17 @@
   border: 1px solid red;
   display: flex;
   flex-direction: column;
+  padding: 20px;
+
   /* align-items: center; */
 }
 
-.resume-main-content > div {
-  border: 2px solid green;
-}
 
 .education-entry,
-.experience-content {
+.experience-entry {
   display: flex;
   gap: 20px;
+  margin-bottom: 20px;
 }
 
 .education-title,

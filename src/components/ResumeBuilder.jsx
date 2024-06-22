@@ -59,24 +59,24 @@ function ResumeBuilder() {
           </div>
           <div className="experience-info">
             <div className="experience-title">Experience</div>
-            {experienceInfo.map((exp, index) => (
-              <div key={index} className="experience-entry">
-                <div className="experience-content">
-                  <div className="left">
-                    <div className="date">
-                      <span>{exp.startDate}</span>
-                      <span>{exp.endDate}</span>
+            <div className="experience-content">
+              {experienceInfo.map((exp, index) => (
+                <div key={index} className="experience-entry">
+                    <div className="left">
+                      <div className="date">
+                        <span>{exp.startDate}</span>
+                        <span>{exp.endDate}</span>
+                      </div>
+                      <div className="location">{exp.location}</div>
                     </div>
-                    <div className="location">{exp.location}</div>
-                  </div>
-                  <div className="right">
-                    <div className="company">{exp.company}</div>
-                    <div className="position">{exp.position}</div>
-                    <div className="description">{exp.description}</div>
-                  </div>
+                    <div className="right">
+                      <div className="company">{exp.company}</div>
+                      <div className="position">{exp.position}</div>
+                      <div className="description">{exp.description}</div>
+                    </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
