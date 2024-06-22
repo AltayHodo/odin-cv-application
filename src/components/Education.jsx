@@ -6,6 +6,7 @@ function Education({ onSave }) {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [location, setLocation] = useState('');
+  const [educationArray, setEducationArray] = useState([]);
 
   function saveInfo(e) {
     e.preventDefault();
@@ -16,7 +17,16 @@ function Education({ onSave }) {
       endDate,
       location,
     };
-    onSave(educationInfo);
+    const newEducationArray = [...educationArray, educationInfo];
+    setEducationArray(newEducationArray);
+    onSave(newEducationArray);
+
+    setSchool('');
+    setDegree('');
+    setStartDate('');
+    setEndDate('');
+    setLocation('');
+    document.querySelector('.education-form').reset();
   }
 
   return (
@@ -66,6 +76,14 @@ function Education({ onSave }) {
         />
         <button type="submit">Save</button>
       </form>
+      <div>
+        <h3>Added educations</h3>
+        <ul>
+          {educationArray.map((edu, index) => (
+            <li key={index}>{edu.school}</li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

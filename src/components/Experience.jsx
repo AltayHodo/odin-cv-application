@@ -7,10 +7,11 @@ function Experience({ onSave }) {
   const [endDate, setEndDate] = useState('');
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
+  const [experienceArray, setExperienceArray] = useState([]);
 
   function saveInfo(e) {
     e.preventDefault();
-    const educationInfo = {
+    const experienceInfo = {
       company,
       position,
       startDate,
@@ -18,14 +19,24 @@ function Experience({ onSave }) {
       location,
       description,
     };
-    onSave(educationInfo);
+    const newExperienceArray = [...experienceArray, experienceInfo];
+    setExperienceArray(newExperienceArray);
+    onSave(newExperienceArray);
+
+    setCompany('');
+    setPosition('');
+    setStartDate('');
+    setEndDate('');
+    setLocation('');
+    setDescription('');
+    document.querySelector('.experience-form').reset()
   }
 
   return (
     <>
       <h2>Experience</h2>
       <form action="" className="experience-form" onSubmit={saveInfo}>
-      <label htmlFor="position">Job Title</label>
+        <label htmlFor="position">Job Title</label>
         <input
           type="text"
           name="position"
@@ -75,6 +86,14 @@ function Experience({ onSave }) {
         ></textarea>
         <button type="submit">Save</button>
       </form>
+      <div>
+        <h3>Added Experiences</h3>
+        <ul>
+          {experienceArray.map((exp, index) => (
+            <li key={index}>{exp.company}</li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

@@ -64,7 +64,7 @@
   border: 2px solid green;
 }
 
-.education-content,
+.education-entry,
 .experience-content {
   display: flex;
   gap: 20px;
