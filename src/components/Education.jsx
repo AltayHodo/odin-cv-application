@@ -7,6 +7,7 @@ function Education({ onSave }) {
   const [endDate, setEndDate] = useState('');
   const [location, setLocation] = useState('');
   const [educationArray, setEducationArray] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
 
   function saveInfo(e) {
     e.preventDefault();
@@ -17,7 +18,14 @@ function Education({ onSave }) {
       endDate,
       location,
     };
-    const newEducationArray = [...educationArray, educationInfo];
+    let newEducationArray;
+    if (editIndex !== null) {
+      newEducationArray = [...educationArray];
+      newEducationArray[editIndex] = educationInfo;
+      setEditIndex(null);
+    } else {
+      newEducationArray = [...educationArray, educationInfo];
+    }
     setEducationArray(newEducationArray);
     onSave(newEducationArray);
 
@@ -29,6 +37,22 @@ function Education({ onSave }) {
     document.querySelector('.education-form').reset();
   }
 
+  function handleEdit(index) {
+    setEditIndex(index);
+    const education = educationArray[index];
+    setSchool(education.school);
+    setDegree(education.degree);
+    setStartDate(education.startDate);
+    setEndDate(education.endDate);
+    setLocation(education.location);
+  }
+
+  function handleDelete(index) {
+    const newEducationArray = educationArray.filter((_, i) => i !== index);
+    setEducationArray(newEducationArray);
+    onSave(newEducationArray);
+  }
+
   return (
     <>
       <h2>Education</h2>
@@ -38,6 +62,7 @@ function Education({ onSave }) {
           type="text"
           name="school"
           id="school"
+          value={school}
           onChange={(e) => setSchool(e.target.value)}
           required
         />
@@ -47,6 +72,7 @@ function Education({ onSave }) {
           name="degree"
           id="degree"
           placeholder="Ex: Computer Science, BS"
+          value={degree}
           onChange={(e) => setDegree(e.target.value)}
           required
         />
@@ -55,6 +81,7 @@ function Education({ onSave }) {
           type="date"
           name="startDate"
           id="startDate"
+          value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
           required
         />
@@ -63,6 +90,7 @@ function Education({ onSave }) {
           type="date"
           name="endDate"
           id="endDate"
+          value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
           required
         />
@@ -71,6 +99,7 @@ function Education({ onSave }) {
           type="text"
           id="location"
           placeholder="City, State/Country"
+          value={location}
           onChange={(e) => setLocation(e.target.value)}
           required
         />
@@ -80,7 +109,11 @@ function Education({ onSave }) {
         <h3>Added educations</h3>
         <ul>
           {educationArray.map((edu, index) => (
-            <li key={index}>{edu.school}</li>
+            <li key={index}>
+              {edu.school}
+              <button onClick={() => handleEdit(index)}>Edit</button>
+              <button onClick={() => handleDelete(index)}>Delete</button>
+            </li>
           ))}
         </ul>
       </div>

@@ -8,6 +8,7 @@ function Experience({ onSave }) {
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [experienceArray, setExperienceArray] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
 
   function saveInfo(e) {
     e.preventDefault();
@@ -19,9 +20,16 @@ function Experience({ onSave }) {
       location,
       description,
     };
-    const newExperienceArray = [...experienceArray, experienceInfo];
-    setExperienceArray(newExperienceArray);
-    onSave(newExperienceArray);
+    let newExperienceArray
+    if(editIndex !== null){
+      newExperienceArray = [...experienceArray]
+      newExperienceArray[editIndex] = experienceInfo
+      setEditIndex(null)
+    }else{
+      newExperienceArray = [...experienceArray, experienceInfo]
+    }
+    setExperienceArray(newExperienceArray)
+    onSave(newExperienceArray)
 
     setCompany('');
     setPosition('');
@@ -30,6 +38,23 @@ function Experience({ onSave }) {
     setLocation('');
     setDescription('');
     document.querySelector('.experience-form').reset()
+  }
+
+  function handleEdit(index){
+    setEditIndex(index)
+    const experience = experienceArray[index]
+    setCompany(experience.company)
+    setPosition(experience.position)
+    setStartDate(experience.startDate)
+    setEndDate(experience.endDate)
+    setLocation(experience.location)
+    setDescription(experience.description)
+  }
+
+  function handleDelete(index){
+    const newExperienceArray = experienceArray.filter((_, i) => i !== index)
+    setExperienceArray(newExperienceArray)
+    onSave(newExperienceArray)
   }
 
   return (
@@ -41,6 +66,7 @@ function Experience({ onSave }) {
           type="text"
           name="position"
           id="position"
+          value={position}
           onChange={(e) => setPosition(e.target.value)}
           required
         />
@@ -49,6 +75,7 @@ function Experience({ onSave }) {
           type="text"
           name="company"
           id="company"
+          value={company}
           onChange={(e) => setCompany(e.target.value)}
           required
         />
@@ -57,6 +84,7 @@ function Experience({ onSave }) {
           type="date"
           name="startDate"
           id="startDate"
+          value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
           required
         />
@@ -65,6 +93,7 @@ function Experience({ onSave }) {
           type="date"
           name="endDate"
           id="endDate"
+          value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
           required
         />
@@ -73,6 +102,7 @@ function Experience({ onSave }) {
           type="text"
           id="location"
           placeholder="City, State/Country"
+          value={location}
           onChange={(e) => setLocation(e.target.value)}
           required
         />
@@ -81,6 +111,7 @@ function Experience({ onSave }) {
           name="description"
           id="description"
           placeholder="Enter Description"
+          value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
         ></textarea>
@@ -90,7 +121,11 @@ function Experience({ onSave }) {
         <h3>Added Experiences</h3>
         <ul>
           {experienceArray.map((exp, index) => (
-            <li key={index}>{exp.company}</li>
+            <li key={index}>
+              {exp.company}
+              <button onClick={() => handleEdit(index)}>Edit</button>
+              <button onClick={() => handleDelete(index)}>Delete</button>
+              </li>
           ))}
         </ul>
       </div>
